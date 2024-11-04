@@ -419,12 +419,12 @@ ol {
 
 .header__right {
 	text-align: right;
-	padding: 20px 0 15px;
+	padding: 5px 0 5px;
 }
 
 .header__right a {
 	display: inline-block;
-	font-size: 18px;
+	font-size: 15px;
 	color: #ffffff;
 	margin-right: 30px;
 }
