@@ -11,6 +11,6 @@ class CreatorUserController extends Controller
     public function index(){
 
         $mangas = manga::where('user_id',Auth::user()->id)->get();
-        return view('layouts/Dashboard.creatorUser', compact('mangas'));
+        return view('layouts/dashboard.creatorUser', compact('mangas'));
     }
 }
