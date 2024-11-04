@@ -1,0 +1,68 @@
+
+.frcn {
+    max-width: 600px;
+    margin: auto;
+    color: #2a2a2a;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+label {
+    font-size: 18px;
+    margin-bottom: 8px;
+    display: block;
+}
+input[type="text"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #444;
+    border-radius: 4px;
+}
+.rdgr {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.rdgr input {
+    display: none;
+}
+.rdgr label {
+    padding: 10px 20px;
+    color: #333;
+    border: 1px solid #444;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    flex-grow: 1;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+.rdgr input:checked + label {
+    background-color: #e53637;
+    color: white;
+}
+.rdgr label:hover {
+    background-color: #555;
+}
+.button-container {
+    text-align: center;
+}
+button {
+    padding: 10px 20px;
+    background-color: #e53637;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+button:hover {
+    background-color: #e53637;
+}

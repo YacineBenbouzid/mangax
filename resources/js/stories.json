@@ -1,0 +1,8 @@
+[
+    { "id": 1, "title": "Story One", "image":  "https://www.talesinpanels.com/wp-content/uploads/2023/11/webtoon_chars.jpg" },
+    { "id": 2, "title": "Story Two", "image":  "https://www.talesinpanels.com/wp-content/uploads/2023/11/webtoon_chars.jpg" },
+    { "id": 3, "title": "Story Three", "image":"https://www.talesinpanels.com/wp-content/uploads/2023/11/webtoon_chars.jpg" },
+    { "id": 4, "title": "Story Four", "image": "https://www.talesinpanels.com/wp-content/uploads/2023/11/webtoon_chars.jpg" },
+    { "id": 5, "title": "Story Five", "image": "https://www.talesinpanels.com/wp-content/uploads/2023/11/webtoon_chars.jpg" },
+    { "id": 6, "title": "Story Six", "image":  "https://www.talesinpanels.com/wp-content/uploads/2023/11/webtoon_chars.jpg" }
+]
