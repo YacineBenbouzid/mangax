@@ -127,3 +127,16 @@
 
 @endsection
 
+
+
+
+
+
+
+------
+<div class="tt">
+                            <input type="radio" name="role" value="company_user" required>
+                            <label class="wh" for="name">company user</label>
+                            <input type="radio" name="role"  value="creator_user" required>
+                            <label class="wh" for="name">creator user</label>
+                        </div>

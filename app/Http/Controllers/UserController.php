@@ -20,7 +20,15 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'role' => 'required|string',  // You may want to specify accepted roles if necessary
             'email' => 'required|string|email|max:255|unique:users,email', // Email format and uniqueness
-            'password' => 'required', // Password confirmation and minimum length
+            'password' => [
+                'required',
+                'string',
+                'min:8',             // Minimum 8 characters
+                'regex:/[a-z]/',      // At least one lowercase letter
+                'regex:/[A-Z]/',      // At least one uppercase letter
+                'regex:/[0-9]/',      // At least one digit
+                'regex:/[\W_]/',      // At least one special character
+            ],
         ]);
     
         // Create a new user

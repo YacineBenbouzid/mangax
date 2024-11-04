@@ -31,6 +31,22 @@
         display: flex;
         justify-content: center
     }
+    .log{
+        margin-top: 5px;
+        padding:10px 20px 10px;
+        border-radius: 5px;
+        font-weight: 500;
+
+    }
+    .signupm{
+        background-color: #e83e8c;
+
+    }
+    .loginm{
+        border-style: solid;
+        border-width: 2px;
+        border-color: rgb(255, 255, 255);
+    }
 
 </style>    
 </head>
@@ -80,13 +96,16 @@
                         </nav>
                     </div>
                 </div>
-                <div class="col-lg-2">
+                <div class="">
                     <div class="header__right">
                         @auth
-                        <a href="{{route('login.logout')}}">Deconnexion <span class="icon_profile"></span></a>
+                        <a  class="log"  href="{{route('login.logout')}}">Deconnexion <span class="icon_profile"></span></a>
+                        
                         @endauth
                         @guest
-                        <a href="{{route('login')}}">Connexion<span class="icon_profile"></span></a>
+                        <a class="loginm log" href="{{route('login')}}">Log In</a>
+                        <a class="signupm log" href="{{route('signup')}}">Sign Up</a>
+
 
                         @endguest
                     </div>

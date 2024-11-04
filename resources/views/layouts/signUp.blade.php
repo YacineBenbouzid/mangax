@@ -4,7 +4,41 @@
 
 @section('content')
 
-
+<style>
+    .button-container {
+        display: flex;
+        gap: 20px;
+        justify-content: start;
+        margin-top: 20px;
+    }
+    .radio-button {
+        display: none;
+    }
+    .label-button {
+        color: white;
+        padding: 10px 20px;
+        border: 1px solid #ffffff;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .radio-button:checked + .label-button {
+        background-color: #d1e7ff;
+        border-color: #007bff;
+        color: #007bff;
+    }
+    .label-button:hover {
+        background-color: #f0f0f0;
+        border-color: #e83e8c;
+        color: rgb(0, 0, 0);
+    }
+    .roletxt{
+        font-weight: 600;
+        font-size: smaller;
+    }
+</style>
 
 
 
@@ -14,7 +48,7 @@
             <div class="col-lg-12 text-center">
                 <div class="normal__breadcrumb__text">
                     <h2>Sign Up</h2>
-                    <p>Welcome to the official Anime blog.</p>
+                    <p>Welcome to LinkPortalX—the first platform that legally connects all your favorite stories! Bookmark series, explore new titles, and support creators with every click that takes you to their original site. Dive into endless adventures and enjoy your haven for stories!</p>
                 </div>
             </div>
         </div>
@@ -40,16 +74,22 @@
                             <span class="icon_profile"></span>
                         </div>
                         <div class="input__item">
-                            <input type="password" name="password" placeholder="Password" required>
+                            <input type="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
+                            title="Must contain at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character" required>
                             <span class="icon_lock"></span>
                         </div>
 
-                        <h5 class="wh" for="name">Please select your role:</h5>
-                        <div class="tt">
-                            <input type="radio" name="role" value="company_user" required>
-                            <label class="wh" for="name">company user</label>
-                            <input type="radio" name="role"  value="creator_user" required>
-                            <label class="wh" for="name">creator user</label>
+                        <h5 class="roletxt" >Please select your role:</h5>
+                        
+                        <div class="button-container">
+                            <input type="radio" id="readers" name="role" value="reader_user" class="radio-button" required>
+                            <label for="readers" class="label-button"  >Readers</label>
+                            
+                            <input type="radio" id="company-user" name="role" value="company_user" class="radio-button" required>
+                            <label for="company-user" class="label-button" >Company</label>
+                            
+                            <input type="radio" id="creators" name="role" value="creator_user" class="radio-button" required>
+                            <label for="creators" class="label-button"  >Creators</label>
                         </div>
                         
                         <button type="submit" class="site-btn">Login Now</button>
@@ -73,3 +113,5 @@
 </section>
 
 @endsection
+
+
