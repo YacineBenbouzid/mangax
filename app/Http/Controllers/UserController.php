@@ -15,7 +15,6 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        dd($request);
         // Validate the request
         $validated = $request->validate([
             'name' => 'required|string|max:255',
