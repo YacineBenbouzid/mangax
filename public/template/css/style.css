@@ -331,10 +331,11 @@ ol {
 }
 
 .header__logo {
-	
+	height: 70px;
 }
 
-.header__logo a {
+.header__logo a img {
+	height: 70px;
 	display: inline-block;
 }
 
@@ -424,7 +425,7 @@ ol {
 
 .header__right a {
 	display: inline-block;
-	font-size: 15px;
+	/*font-size: 15px;*/
 	color: #ffffff;
 	margin-right: 30px;
 }
@@ -2148,9 +2149,9 @@ ol {
 		position: relative;
 	}
 	.header__right {
-		position: absolute;
-		right: 120px;
-		top: -42px;
+		position: relative;
+		/*right: 120px;
+		top: -42px;*/
 		padding: 0;
 	}
 	.header__menu {
