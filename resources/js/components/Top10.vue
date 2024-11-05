@@ -95,5 +95,16 @@ onMounted(() => {
      font-size: large;
      color: beige;
 }
-
+@media only screen and (max-width: 600px) {
+  h4{
+    font-size: small;
+  }
+  .filter__controls li{
+    font-size: small;
+    padding:3px 5px;
+  }
+  .filter__controls li.active{
+    font-size: smaller;
+  }
+}
 </style>
