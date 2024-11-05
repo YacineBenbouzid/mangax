@@ -38,7 +38,9 @@ const injectCustomStyles = () => {
   const elements2 = document.querySelectorAll('.note-toolbar');
   elements2.forEach(v => {
     v.style.display = 'flex';
+    v.style.flexWrap='wrap';
   });
+
 };
 
 // Async method to initialize the editor
@@ -81,4 +83,5 @@ onMounted(() => {
 .note-btn {
   display: flex;
 }
+
 </style>

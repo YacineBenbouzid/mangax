@@ -62,7 +62,7 @@ Route::get('/manga/{id}', [MangaController::class, 'manga']);
 
 Route::get('/signup', function () {
     return view('layouts/signUp');
-})->name('signup');
+})->name('signup') ;
 Route::post('/signup', [UserController::class, 'store'])->name('signUp.store');
 
 

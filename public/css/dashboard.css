@@ -1,6 +1,6 @@
 
 .frcn {
-    max-width: 600px;
+    width: fit-content;
     margin: auto;
     color: #2a2a2a;
     padding: 20px;

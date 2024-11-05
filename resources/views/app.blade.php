@@ -39,7 +39,7 @@
 
     }
     .signupm{
-        background-color: #e83e8c;
+        background-color: #e53637;
 
     }
     .loginm{
@@ -47,7 +47,24 @@
         border-width: 2px;
         border-color: rgb(255, 255, 255);
     }
-
+    @media only screen and (max-width: 600px) {
+        .flog{
+            position: absolute;
+            padding: 14px;
+            right: 30%;
+            
+        }
+        .log{
+        margin-top: 5px;
+        border-radius: 5px;
+        font-weight: 400;
+        padding:3px 6px;
+        font-size: small;
+        }
+        .loginm{
+        border-width: 1px;
+    }
+    }
 </style>    
 </head>
 <body>
@@ -59,6 +76,7 @@
                         <a >
                             <img src="template/img/logo.png"  alt="">
                         </a>
+                        
                     </div>
                 </div>
                 <div class="col-lg-8">
@@ -96,7 +114,7 @@
                         </nav>
                     </div>
                 </div>
-                <div class="">
+                <div class="flog">
                     <div class="header__right">
                         @auth
                         <a  class="log"  href="{{route('login.logout')}}">Deconnexion <span class="icon_profile"></span></a>

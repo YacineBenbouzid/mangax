@@ -10,63 +10,63 @@
     
 
     .most-viewed-section {
-    padding: 20px;
-    background-color: #1c1c2b00; /* Dark background for the whole section */
-}
+        padding: 20px;
+        background-color: #1c1c2b00; /* Dark background for the whole section */
+    }
 
-.manga-scroll {
-    display: flex;
-    overflow-x: auto; /* Allows horizontal scrolling */
-    padding: 20px 0;
-}
+    .manga-scroll {
+        display: flex;
+        overflow-x: auto; /* Allows horizontal scrolling */
+        padding: 20px 0;
+    }
 
-.manga-item {
-    position: relative;
-    margin-right: 20px;
-    text-align: center;
-    width: 150px; /* Adjust width based on your image sizes */
-    flex-shrink: 0; /* Prevents the items from shrinking when the screen is small */
-}
+    .manga-item {
+        position: relative;
+        margin-right: 20px;
+        text-align: center;
+        width: 150px; /* Adjust width based on your image sizes */
+        flex-shrink: 0; /* Prevents the items from shrinking when the screen is small */
+    }
 
-.manga-item img, .product__item__pic {
-    position: static;
-    width: 150px;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
+    .manga-item img, .product__item__pic {
+        position: static;
+        width: 150px;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
 
-.manga-item h5 {
-    color: #fff;
-    margin-top: 10px;
-}
+    .manga-item h5 {
+        color: #fff;
+        margin-top: 10px;
+    }
 
-.ranking-number {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #000;
-    color: #fff;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-}
+    .ranking-number {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #000;
+        color: #fff;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: bold;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
 
-/* Optional: Customize scrollbar */
-.manga-scroll::-webkit-scrollbar {
-    height: 8px;
-}
+    /* Optional: Customize scrollbar */
+    .manga-scroll::-webkit-scrollbar {
+        height: 8px;
+    }
 
-.manga-scroll::-webkit-scrollbar-thumb {
-    background-color: #555;
-    border-radius: 10px;
-}
+    .manga-scroll::-webkit-scrollbar-thumb {
+        background-color: #555;
+        border-radius: 10px;
+    }
 
 </style>
 
@@ -202,7 +202,14 @@
     .chu{
         width: 40vw;
     }
-    
+    @media only screen and (max-width: 600px) {
+        .dt{
+        width: 70vw;
+    }
+    .chu{
+        width: 70vw;
+    }
+    }
 </style>
 <style>
 
@@ -221,7 +228,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url('1.webp'); /* Background image */
+        /*background-image: url('1.webp');  Background image */
         background-size: cover; /* Cover the entire container */
         background-position: center; /* Center the image */
         filter: blur(30px); /* Blur effect */
@@ -275,20 +282,20 @@
     sliderElement.style.width = `calc(60vw *${totalSlides+4}`;
 
 
-    const slideWidth = 60; // Each slide width in vw
+    const slideWidth = 60; 
 
     const slides = slider.children;
-    slides[0].style.opacity = '0.5'; // Change opacity of the second child to 0.5
+    slides[0].style.opacity = '0.5'; 
     slides[2].style.opacity = '0.5';
 
     function moveSlider() {
         currentSlide++;
         slider.style.transform = `translateX(-${(currentSlide * slideWidth) - 20}vw)`;
-        const slides = slider.children; // Get all children of the slider
-        if (slides.length > 1) { // Check if there are at least 2 children
-            slides[currentSlide-1].style.opacity = '0.5'; // Change opacity of the second child to 0.5
-            slides[currentSlide+1].style.opacity = '0.5'; // Change opacity of the second child to 0.5
-            slides[currentSlide].style.opacity = '1'; // Change opacity of the second child to 0.5
+        const slides = slider.children;
+        if (slides.length > 1) { 
+            slides[currentSlide-1].style.opacity = '0.5'; 
+            slides[currentSlide+1].style.opacity = '0.5'; 
+            slides[currentSlide].style.opacity = '1'; 
         }
         
 

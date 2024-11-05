@@ -3,10 +3,10 @@
     <input type="file" @change="onImageSelected" accept="image/*" /> 
     <div v-if="imagePreview"></div>
     <div class="label" v-else>
-      <i class="fas fa-upload"></i>
+      <i class="fa fa-upload"></i>
       <p>Click or Drag to Upload Image</p>
     </div>
-    <div v-if="imagePreview" class="image-preview-container" :style="{ width: width + 'px', height: height + 'px' }">
+    <div v-if="imagePreview" class="image-preview-container" >
       <img :src="imagePreview" alt="Image Preview" class="image-preview" />
     </div>
   </div>
@@ -81,10 +81,11 @@ function onImageSelected(event) {
 <style scoped>
 .image-preview-container {
   margin-top: 10px;
-  border: 2px solid #ccc;
+  /*border: 2px solid #ccc;*/
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 .im {
   display: flex;
