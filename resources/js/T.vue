@@ -19,7 +19,7 @@
         <CreateNewSeies :message="id" />
       </div>
     </div>
-    <div  v-if="iseditVisible" class="newmanga">
+    <div  v-else-if="iseditVisible" class="newmanga">
       <div class="mmf">
         
             <button class="childd" @click="edit" >close    <i class="fa fa-close"></i></button>
@@ -27,23 +27,24 @@
         <CreateNewSeies :message="id"/>
       </div>
     </div>
-    <div class="prod">
-    <ul v-if="mangas.length">
-      <div v-for="manga in mangas" :key="manga.id">
-        <div class="myso">
-          <div class="mtitle">{{ manga.name }}</div>
-          <a :href="`../manga/${manga.id}`" class="divim" ><img :src="`/storage/${manga.image}`" alt="Image" /></a>
-          <div class="abn">
-            <button @click="AddChapter(manga.id)" class="mbs ">Add Chapter </button>
-            <button @click="edit(manga.id)" class="mbs">Edit</button>
-            <button @click="deleteManga(manga.id)" class="mbs">Delete</button>
+    <div v-else class="prod">
+      <ul v-if="mangas.length">
+        <div v-for="manga in mangas" :key="manga.id">
+          <div class="myso">
+            <div class="mtitle">{{ manga.name }}</div>
+            <a :href="`../manga/${manga.id}`" class="divim" ><img :src="`/storage/${manga.image}`" alt="Image" /></a>
+            <div class="abn">
+              <button @click="AddChapter(manga.id)" class="mbs ">Add Chapter </button>
+              <button @click="edit(manga.id)" class="mbs">Edit</button>
+              <button @click="deleteManga(manga.id)" class="mbs">Delete</button>
+            </div>
           </div>
         </div>
-      </div>
-    </ul>
+      </ul>
 
-    <p v-else>No mangas found.</p>
-    <p v-if="error">{{ error }}</p></div>
+      <p v-else>No mangas found.</p>
+      <p v-if="error">{{ error }}</p>
+    </div>
   </div>
 
 </template>
@@ -76,18 +77,18 @@ const AddSerie = () => {
   
 };
 const edit = (idd) => {
-  id.value=idd;
-  isAddSerieVisible.value = !isAddSerieVisible.value; // Toggle visibility
-  
+  id.value = idd;
+  iseditVisible.value = !iseditVisible.value;
 };
-const close = () => {
-  isAddSerieVisible.value = false; // Toggle visibility
 
-  isAddSerieVisible.value = false; // Toggle visibility
-  id.value=null;
-  console.log(778);
+const close = () => {
+  isAddChapterVisible.value = false;
+  isAddSerieVisible.value = false;
+  iseditVisible.value = false;
+  id.value = null;
   fetchMangas();
 };
+
 const deleteManga = async (id) => {
   if (confirm("Are you sure you want to delete this manga?")) {
     try {

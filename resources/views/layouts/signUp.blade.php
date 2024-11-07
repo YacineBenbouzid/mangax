@@ -83,16 +83,16 @@
                         
                         <div class="button-container">
                             <input type="radio" id="readers" name="role" value="reader_user" class="radio-button" required>
-                            <label for="readers" class="label-button"  >Readers</label>
+                            <label for="readers" class="label-button"  >Reader</label>
                             
                             <input type="radio" id="company-user" name="role" value="company_user" class="radio-button" required>
                             <label for="company-user" class="label-button" >Company</label>
                             
                             <input type="radio" id="creators" name="role" value="creator_user" class="radio-button" required>
-                            <label for="creators" class="label-button"  >Creators</label>
+                            <label for="creators" class="label-button"  >Creator</label>
                         </div>
                         
-                        <button type="submit" class="site-btn">Login Now</button>
+                        <button type="submit" class="site-btn">Sign Up Now</button>
                     </form>
                     <h5>Already have an account? <a href="login">Log In!</a></h5>
                 </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Your Website')</title>
+    <title>@yield('title', 'linkportalx')</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 
@@ -117,7 +117,7 @@
                 <div class="flog">
                     <div class="header__right">
                         @auth
-                        <a  class="log"  href="{{route('login.logout')}}">Deconnexion <span class="icon_profile"></span></a>
+                        <a  class="log"  href="{{route('login.logout')}}">Log out <span class="icon_profile"></span></a>
                         
                         @endauth
                         @guest
@@ -148,7 +148,6 @@
     <script src="{{ asset('template/js/jquery.slicknav.js') }}"></script>
     <script src="{{ asset('template/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('template/js/main.js') }}"></script>
-    <script src="https://e940-105-235-132-176.ngrok-free.app/resources/js/app.js"></script>
 
 
 

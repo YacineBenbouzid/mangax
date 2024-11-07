@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CompanyUserController;
 use App\Http\Controllers\CreatorUserController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SliderController;
 use App\Models\Slider;
@@ -107,3 +108,9 @@ Route::prefix('Dashboard')->middleware(['auth'])->group(function () {
 
 
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+});
+Route::get('/profile/show/{id}', [ProfileController::class, 'show'])->name('profile.show');
