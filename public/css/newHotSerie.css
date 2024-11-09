@@ -1,0 +1,133 @@
+
+.hottitle{
+    color: var(--white);
+    font-family: var(--fontNav);
+    font-size: x-large;
+    margin-left:10% ;
+    font-weight: 600;
+}
+.hotserie {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.left, .right {
+    width: 40%;
+    background-color: black;
+    border-radius: 8px;
+}
+
+
+.animedetailstext {
+    padding: 10px;
+    background-color: black;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.animedetailstitle h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: var(--white);
+}
+
+.animedetailswidget {
+    margin-top: 15px;
+}
+
+/* Cover Image Styling */
+.cover img {
+    padding: 8px;
+    height: 60vh;
+    width: 60vh;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Chapters Section */
+.chapterssection {
+    border-radius: 8px;
+    
+}
+
+.chapterlist {
+    
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    overflow-y: scroll;
+    
+}
+
+.chapterlist li {
+    width: 98%;
+    padding: 10px;
+    margin: 8px 0;
+    background-color: var(--genre);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+.chapterlist a{
+    font-family: var(--fontNav);
+    font-size: medium;
+
+}
+.chapterlist li:hover {
+    background-color: var(--black);
+}
+
+.chapterlist li img.chi {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* New & Trending Title */
+.hotserie > div:first-child > div:first-child {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 15px;
+}
+
+.chapterlist::-webkit-scrollbar {
+    height: 8px;
+}
+
+.chapterlist::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 10px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .hotserie {
+        display: flex;
+        flex-direction: column;
+    }
+    .left, .right {
+        width: 100%;
+    }
+    .chapterlist li {
+        width: 80vw;
+        margin-left: 10%;
+    }
+    .cover img {
+        
+        width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+}

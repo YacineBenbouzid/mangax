@@ -134,10 +134,10 @@ class MangaController extends Controller
                                ->get();
 
 
-    $smanga = Manga::where('created_at', '>=', Carbon::now()->subMonth())
-            ->orderBy('nvw', 'desc')
-            ->take(1) 
-            ->first(); // Use first() instead of get() to get a single item
+        $smanga = Manga::where('created_at', '>=', Carbon::now()->subWeeks(2))
+        ->orderBy('nvm', 'desc')
+        ->take(1) 
+        ->first();
                 
     $chapters = $smanga ? $smanga->chapters()->get() : collect();
     //$smanga = manga::find(20);

@@ -85,16 +85,24 @@ function onImageSelected(event) {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 
 }
 .im {
   display: flex;
   justify-content: center;
+  background-color: black;
+  border-color: rgb(126, 126, 126);
+
 }
 
 .image-preview {
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
+}
+
+.label{
+  color: white;
 }
 </style>

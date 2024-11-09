@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CompanyUserController;
 use App\Http\Controllers\CreatorUserController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\MangaController;
@@ -86,4 +87,22 @@ Route::prefix('Dashboard')->middleware(['auth'])->group(function () {
     Route::get('/Serie/{id}', [MangaController::class, 'show']);
     Route::post('/Serie/{id}', [MangaController::class, 'update']);
     Route::delete('/Serie/{id}', [MangaController::class, 'destroy']);
+
+
+    
+    Route::get('/myprofile', [ProfileController::class, 'myprofile']);
+
 });
+
+
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+});
+Route::get('/profile/show/{id}', [ProfileController::class, 'show'])->name('profile.show');
+
+});
+
