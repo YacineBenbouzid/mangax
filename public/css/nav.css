@@ -1,0 +1,176 @@
+
+.nav{
+    display: flex;
+    background-color: var(--blue);
+    height: 12vh;
+    flex-direction: row;
+}
+.logo{
+    width: 20vw;
+}
+.navlist{
+    width: 50vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.navlist a {
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+    color: var(--navColor);
+    font-family: var(--fontNav);
+    text-decoration: none;
+    padding: 10px 20px;
+    font-weight: 700;
+}
+.dropdown a{
+    display: none;
+}
+.dropdown:active a{
+    display: block;
+}
+.navlog{
+    display: flex;
+    width: 30vw;
+    align-items: center;
+    flex-direction: row-reverse;
+
+
+}
+.flog{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+}
+.log{
+    display: flex;
+    height: fit-content;
+    padding: 10px 0;
+    justify-content: center;
+    width: 40%;
+    border-radius: 5px;
+    font-weight: 600;
+    color: var(--navColor);
+    font-family: var(--fontNav);
+    text-decoration: none;
+
+
+}
+
+.signupm{
+    background-color: var(--red);
+    color: white;
+
+
+}
+.loginm{
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(255, 255, 255);
+}
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo img{
+    height: 60%;
+}
+
+.navcontainer {
+    cursor: pointer;
+    display: none;
+  }
+  
+  .bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: var(--navColor);
+    margin: 6px 0;
+    margin-right: 10px;
+    transition: 0.4s;
+  }
+  
+  .change .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+  }
+  
+  .change .bar2 {opacity: 0;}
+  
+  .change .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+  }
+
+  .micon{
+    display: none;
+  }
+/*reponsive*/
+
+@media only screen and (max-width: 600px) {
+    .navlist{
+        display: none;
+        margin-top: 12vh;
+        flex-direction: column;
+        position: absolute;
+        z-index: 1;
+        margin-top: 12vh;
+        height: 88vh;
+        background-color: white;
+        width: 100%;
+    }
+    .navlist a{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 2vh;
+    }
+    .navlog{
+        width: 50%;
+    }
+    .flog{
+        width: 100%;        
+    }
+    .nav{
+        justify-content: space-between;
+    }
+
+    .log{
+        display: none;
+        border-radius: 5px;
+        font-weight: 600;
+        padding:1vh 0px;
+        font-size: small;
+    }
+    .micon{
+        color: var(--navColor);
+        display: flex;
+        justify-content: end;
+    }
+
+    .loginm{
+        border-width: 1px;
+    }
+    .navmenu{
+        display: flex;
+        align-items: center;
+    }
+    .navcontainer {
+        display: inline-block;
+        height: fit-content;
+    }
+    .logo img{
+        height: 40%;
+    }
+    .flog{
+        width: 100%;
+        padding: 0px;
+        justify-content: end;
+    }
+}
+
+
+

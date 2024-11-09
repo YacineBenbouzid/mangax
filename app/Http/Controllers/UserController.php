@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -30,13 +31,27 @@ class UserController extends Controller
                 'regex:/[\W_]/',      // At least one special character
             ],
         ]);
-    
+        
         // Create a new user
-        User::create([
+        $user =User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'role'  => $validated['role'],
             'password' => Hash::make($validated['password']), // Hashing password before storing
+        ]);
+        Profile::create([
+            'user_id' => $user->id,  // Foreign key to the user
+            'first_name' => '', // Or set default values if necessary
+            'last_name' => '',
+            'username' => '',
+            'email' => $user->email,
+            'phone' => '',
+            'birthday' => null,
+            'address' => '',
+            'job_title' => '',
+            'linkedin' => '',
+            'profile_picture' => '',
+            'public_visibility' => false,
         ]);
     
         // Regenerate session ID to avoid session fixation attacks

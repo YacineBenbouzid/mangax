@@ -1,0 +1,214 @@
+.logcontent{
+    background-image: url('../img/login.jpg');
+    height: 46vh;
+    width: 98vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--white);
+    font-family: var(--fontNav);
+    
+}
+.logcontent h1{
+    display: flex;
+    justify-content: center;
+}
+.logcontent h3{
+    font-weight: 400;
+    padding: 2vh 20vw;
+    display: flex;
+    justify-content: center;
+    
+}
+.signin{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.signtop{
+    display: flex;
+}
+.signbuttom{
+    display: flex;
+}
+.form{
+    width: 50vw;
+    display: flex;
+    justify-content: end;
+    padding-right: 7vw;
+}
+.form form{
+    width: fit-content;
+    padding: 20px 30px;
+}
+.input_item input{
+    margin-top: 3vh;
+    height: 50px;
+    width: 30vw;
+    background-color: var(--white);
+    border: none;
+    padding-left: 70px;
+
+}
+
+
+
+
+
+.line{
+    display: flex;
+    width: 1px;
+    background-color: var(--white);
+}
+
+.ask{
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    padding-left: 7vw;
+    justify-content: start;
+}
+.ask h2{
+    color: var(--white);
+}
+.ask a{
+    background-color: var(--red);
+    font-family: var(--fontsignUp);
+    font-size: larger;
+    border: none;
+    margin-top: 5vh;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+    height: 50px;
+    color: var(--white);
+}
+.signbuttom{
+    width: 98vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.signbuttom h2{
+    display: flex;
+    justify-content: center;
+    color: var(--white);
+}
+.signbuttom div {
+    display: flex;
+    justify-content: center;
+}
+.signbuttom div a{
+    background-color: var(--red);
+    font-family: var(--fontsignUp);
+    font-size: larger;
+    border: none;
+    margin-top: 5vh;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    color: var(--white);
+    width: 40vw;
+    
+}
+
+
+
+.roletxt{
+    color: var(--white);
+    font-family: var(--fontsignUp);
+
+}
+.signuptbutton{
+    background-color: var(--red);
+    font-family: var(--fontsignUp);
+    font-size: larger;
+    border: none;
+    margin-top: 5vh;
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+    height: 50px;
+}
+.button-container {
+    display: flex;
+    gap: 20px;
+    justify-content: start;
+    margin-top: 20px;
+}
+.radio-button {
+    display: none;
+}
+.label-button {
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    text-align: center;
+    font-size: medium;
+    font-family: var(--fontsignUp);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.radio-button:checked + .label-button {
+    background-color: #d1e7ff;
+    border-color: #007bff;
+    color: #007bff;
+}
+.label-button:hover {
+    background-color: #f0f0f0;
+    border-color: #e83e8c;
+    color: rgb(0, 0, 0);
+}
+.roletxt{
+    font-family: var(--fontsignUp);
+    font-size: large;
+    font-weight: 500;
+
+}
+
+/*     responsive    */
+
+@media only screen and (max-width: 600px) {
+    .signtop{
+        flex-direction: column;
+    }
+    .form{
+        width: 100vw;
+        justify-content: center;
+    }
+    .logcontent{
+        width: 100vw;
+    }
+    .input_item input{
+        width: 80vw;
+    }
+    .ask a{
+        width: 50vw;
+    }
+    .ask h2{
+        width: 90vw;
+    }
+    .signbuttom{
+        padding-left: 20px;
+        padding-right: 20px;
+
+    }
+    .signbuttom div a{
+        
+        width: 100%;
+    }
+    .signuptbutton{
+        width: 50vw;
+    }
+    .logcontent h3{
+        font-size: small;
+    }
+}

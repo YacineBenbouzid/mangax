@@ -1,129 +1,239 @@
 
 @extends('app')
 
-@section('title', 'Home')
+@section('title', 'Serie')
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/newHotSerie.css') }}">
+<style>
+/* Wrapper for the entire comment component */
+.comment-section {
+    width: 80%;
+    max-width: 1000px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    color: #eee;
+    /*background-color: #1a1a1a;*/
+}
 
+/* Comments header */
+.comments-header {
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.comments-title {
+    font-size: 24px;
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+/* Individual comment item */
+.comment-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    /*background: #2a2a2a;*/
+    transition: box-shadow 0.3s ease;
+}
+
+.comment-item {
+    box-shadow: 0px 4px 10px rgba(255, 77, 77, 0.2);
+}
+
+.comment-avatar img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 2px solid #ff4d4d;
+}
+
+/* Comment content */
+.comment-content {
+    max-width: calc(100% - 65px);
+}
+
+.comment-author {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff4d4d;
+    margin-bottom: 5px;
+}
+
+.comment-time {
+    font-size: 14px;
+    color: #bbb;
+    font-weight: normal;
+}
+
+.comment-text {
+    font-size: 15px;
+    color: #ddd;
+    margin-top: 8px;
+    line-height: 1.5;
+}
+
+/* Comment form */
+.comment-form-wrapper {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 8px;
+    background: #2a2a2a;
+}
+
+.comment-form-header {
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.comment-form-title {
+    font-size: 20px;
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-input {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background-color: #1a1a1a;
+    color: #ddd;
+    resize: vertical;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+.comment-input:focus {
+    border-color: #ff4d4d;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 77, 77, 0.5);
+}
+
+.comment-submit-btn {
+    align-self: flex-end;
+    padding: 10px 20px;
+    font-size: 15px;
+    color: #fff;
+    background-color: #ff4d4d;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.comment-submit-btn:hover {
+    background-color: #e63939;
+}
+
+
+</style>
+@endsection
 @section('content')
+<div class="hotserie">
 
-        <section class="anime-details spad">
-            <div class="container">
-                <div class="ad">
+    <div class="left">
 
-
-
-                    <div class="dt">
-                        <div class="anime__details__content">
-                            <div class="">
-                                <div class="col-lg-10">
-                                    <div class="anime__details__pic set-bg" data-setbg="{{ asset('storage/' . $manga->image) }}">
-                                    </div>
-                                </div>
-                                <div class="col-lg-9">
-                                    <div class="anime__details__text">
-                                        <div class="anime__details__title">
-                                            <h3>{{$manga->name}}</h3>
-                                        </div>
-
-                                        <p>{!! $manga->description !!}</p>
-
-                                        <div class="anime__details__widget">
-                                            <div class="row">
-                                                <div class="col-lg-6 col-md-6">
-                                                    <ul>
-                                                        <li><span>Type:</span> {{$manga->type}}</li>
-
-                                                        <li><span>Genre:</span> {{$manga->genre_1 }}&nbsp; &nbsp;  {{ $manga->genre_2 }}&nbsp; &nbsp;  {{ $manga->genre_3}}</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-lg-6 col-md-6">
-                                                    <ul>
-
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="anime__details__btn">
-                                            @auth
-                                                @if($sub)
-                                                <a href="/Dashboard/subscribe?user_id={{ auth()->user()->id }}&manga_id={{ $manga->id }}" class="follow-btn"><i class="fa fa-heart-o"></i> unfollow</a>
-
-                                                @else
-                                                <a href="/Dashboard/subscribe?user_id={{ auth()->user()->id }}&manga_id={{ $manga->id }}" class="follow-btn"><i class="fa fa-heart-o"></i> follow</a>
-
-                                                @endif
-
-                                            @endauth
-                                            @guest
-                                            <a href="{{ route('login') }}" class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
-
-
-                                            @endguest
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+        @if(isset($manga))
+        <div class="w40 tor">
+            <div class="">
+                <div class="cover">
+                    <img  src="{{ asset('storage/' . $manga->image) }}"/>
+                        
+                    
+                </div>
+                <div class="">
+                    <div class="animedetailstext">
+                        <div class="animedetailstitle">
+                            <h3>{{$manga->name}}</h3>
                         </div>
-                    </div>
-                    <div class="chu">
-                        <div>
-                            <div class="chapter">
 
+                        <p>{!! $manga->description !!}</p>
 
-                                <!-- Webcomic Profile Section -->
-                                
-                            
-                                <!-- Chapters Section -->
-                                <div class="chapters-section">
-                                    
-                                    <ul class="chapter-list">
-                                        @foreach ( $chapters as $chapter )
-                                            <a href="{{$chapter->link}}"><li><img class="chi" src="{{ asset('storage/' . $chapter->image) }}">Chapter 1:{{$chapter->n_chapter}} <span>{{$chapter->date}}</span></li></a>
-                                        @endforeach
-                            
+                        <div class="animedetailswidget">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6">
+                                    <ul>
+                                        
+                                    </ul>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <ul>
+
+                                        
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
- <div id="chapters"></div>
-                    <div class="row">
-                        <div class="col-lg-8 col-md-8">
-                            <div class="anime__details__review">
-                                <div class="section-title">
-                                    <h5>Comments</h5>
-                                </div>
-                                    
-                                    @foreach ($comments as $comment)
 
-                                <div class="anime__review__item">
-                                    <div class="anime__review__item__pic">
-                                        <img src="img/anime/review-6.jpg" alt="">
-                                    </div>
-                                    <div class="anime__review__item__text">
-                                        <h6>{{ $comment->user->name }} - <span>{{ $comment->created_at->diffForHumans() }} ago</span></h6>
-                                        <p>{{ $comment->body }}</p>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                            <div class="anime__details__form">
-                                <div class="section-title">
-                                    <h5>Your Comment</h5>
-                                </div>
-                                <form action="{{ route('comments.store') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="id" value="{{$manga->id}}" />
-                                    <textarea name="body" placeholder="Your Comment"></textarea>
-                                    <button type="submit"><i class="fa fa-location-arrow"></i> Comment</button>
-                                </form>
-                            </div>
                         </div>
-
                     </div>
                 </div>
-            </section>
+        </div>
+        @endif
+    </div>
+    <div class="right -">
+        <div class="w40 tol">
+            <div class="chapter">
+
+
+
+                <div class="chapterssection">
+                    
+                    <ul class="chapterlist">
+                        @foreach ( $chapters as $chapter )
+                            <a href="{{$chapter->link}}"><li><img class="chi" src="{{ asset('storage/' . $chapter->image) }}">Chapter 1:{{$chapter->n_chapter}} <span>{{$chapter->date}}</span></li></a>
+                        @endforeach
+            
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="vide"></div>
+
+<div class="comment-section">
+    <div class="comments-wrapper">
+        <div class="comments-header">
+            <h5 class="comments-title">Comments</h5>
+        </div>
+        @foreach ($comments as $comment)
+            <div class="comment-item">
+                <div class="comment-avatar">
+                    <img src="{{asset('img/logo.png')}}" alt="User Avatar">
+                </div>
+                <div class="comment-content">
+                    <h6 class="comment-author">{{ $comment->user->name }} - <span class="comment-time">{{ $comment->created_at->diffForHumans() }} ago</span></h6>
+                    <p class="comment-text">{{ $comment->body }}</p>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    
+    <div class="comment-form-wrapper">
+        <div class="comment-form-header">
+            <h5 class="comment-form-title">Your Comment</h5>
+        </div>
+        <form action="{{ route('comments.store') }}" method="POST" class="comment-form">
+            @csrf
+            <input type="hidden" name="id" value="{{ $manga->id }}" />
+            <textarea name="body" class="comment-input" placeholder="Your Comment"></textarea>
+            <button type="submit" class="comment-submit-btn"><i class="fa fa-location-arrow"></i> Comment</button>
+        </form>
+    </div>
+</div>
+
 
 @endsection
 
