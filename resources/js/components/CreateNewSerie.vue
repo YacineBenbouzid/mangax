@@ -1,7 +1,9 @@
 <template>
   <div class="frcn">
+    
+    
+    <div class="close"><button  @click="close">Close</button></div>
     <h2>Series Form</h2>
-
     <form @submit.prevent="submitForm" enctype="multipart/form-data">
       <div class="formcontent">
         <div class="frst">
@@ -66,6 +68,7 @@
     <!-- Toast Notification -->
     <div v-if="toastMessage" :class="`toast ${toastType}`">{{ toastMessage }}</div>
   </div>
+
 </template>
 
 <script setup>
@@ -74,7 +77,9 @@ import axios from 'axios';
 import SummernoteEditor from './SummernoteEditor.vue'; 
 import ImageUpload from './ImageUpload.vue'; 
 import { genres } from '../genres.js';
-import { defineProps } from 'vue';
+import { defineProps, defineEmits } from 'vue';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 
 const props = defineProps({
   message: Number
@@ -85,7 +90,7 @@ const vgenres = ref(genres);
 const loading = ref(false); // New loading state
 const toastMessage = ref(""); // Toast message state
 const toastType = ref(""); // Toast type state
-
+const emit = defineEmits();
 const form = ref({
   name: '',
   type: '',
@@ -102,6 +107,9 @@ onMounted(() => {
 const handleImageUpload = (imageData) => {
   form.value.image = imageData; // Receive the image data from the child component
 }
+const ggt = () => {
+  toast("Wow so easy !", {autoClose: 1000,});
+  }
 
 const updateDescription = (content) => {
   description.value = content; // Update the description with emitted content
@@ -115,7 +123,10 @@ const showToast = (message, type) => {
     toastMessage.value = ""; // Clear toast after 3 seconds
   }, 3000);
 };
+const close =()=>{
+  emit('updateValue', false);
 
+}
 const GetDataForUpdate = async () => {
   if (props.message != null) {
     try {
@@ -129,7 +140,7 @@ const GetDataForUpdate = async () => {
       description.value = response.data.data.description;
     } catch (error) {
       console.error('Form submission error:', error);
-      showToast('Error loading form data', 'error');
+      
     }
   }
 };
@@ -154,6 +165,8 @@ const submitForm = async () => {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
       });
+      emit('updateValue', false);
+      toast.info("Your series has been updated successfully!", {position: toast.POSITION.TOP_RIGHT})
     } else {
       response = await axios.post('/links', formData, {
         headers: {
@@ -161,9 +174,11 @@ const submitForm = async () => {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
       });
+      emit('updateValue', false);
+      toast.success("Your series has been created successfully!", {position: toast.POSITION.TOP_RIGHT})
     }
     
-    showToast('Form submitted successfully!', 'success');
+
     form.value = { name: '', type: '', genre_1: '', genre_2: '', genre_3: '', image: '' };
     description.value = '';
   } catch (error) {
@@ -176,20 +191,80 @@ const submitForm = async () => {
 </script>
 
 <style scoped>
-.formcontent {
-  display: flex;
+.frcn {
+    background-color: #2b2b2b; /* Dark background */
+    color: white; /* Default text color for the form */
+    padding: 20px;
+    border-radius: 8px;
 }
 
-.frst + .sec {
-  margin: 2vw;
+/* Labels */
+label {
+    color: #f5f5f5; /* Lighter white for readability */
 }
 
-.genres {
-  width: 100%;
+/* Input fields */
+input[type="text"],
+input[type="radio"] {
+    background-color: #333; /* Dark input background */
+    color: white;
+    border: 1px solid #555; /* Subtle border for input fields */
+    padding: 8px;
+    border-radius: 4px;
 }
 
+/* Dropdown selectors */
+select {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+/* Dark mode for buttons */
+button {
+    background-color: #444; /* Darker button background */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #555; /* Slightly lighter on hover */
+}
+
+/* Close button specific styling */
+.close button {
+    background-color: #d9534f; /* Dark red for close button */
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Dark background and white text for .note-editor */
 .sum {
-  padding: 20px;
+    background-color: #333;
+    color: white;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+/* Toast Notification */
+.toast {
+    background-color: #444; /* Dark background for toast */
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Genres container */
+.genres div {
+    margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -201,21 +276,4 @@ const submitForm = async () => {
   }
 }
 
-.toast {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 10px;
-  color: #fff;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-.toast.success {
-  background-color: #28a745;
-}
-
-.toast.error {
-  background-color: #dc3545;
-}
 </style>

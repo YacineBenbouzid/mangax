@@ -57,6 +57,7 @@ onMounted(() => {
     placeholder: 'Hello stand alone UI',
     tabsize: 2,
     height: 120,
+
     toolbar: [
       ['style', ['bold', 'italic', 'underline', 'clear']],
       ['font', ['strikethrough', 'superscript', 'subscript']],
@@ -68,7 +69,38 @@ onMounted(() => {
     callbacks: {
       onChange: (contents) => {
         emit('update:content', contents); // Emit the content to the parent
+      },
+      onInit: function() {
+      // Set the editor to dark mode
+      $('.note-editor').css({
+        'background-color': '#2b2b2b',  // Dark background for the editor
+        'color': 'white'                // White text color
+      });
+
+      // Style the toolbar for dark mode
+      $('.note-toolbar').css({
+        'background-color': '#333',     // Dark background for the toolbar
+        'color': 'white'                // White text on toolbar
+      });
+
+      // Style the buttons in the toolbar
+      $('.note-btn').css({
+        'background-color': '#444',     // Dark button background
+        'color': 'white'                // White text on buttons
+      });
+
+      // Style the dropdowns, popups, and other UI components
+      $('.note-dropdown').css({
+        'background-color': '#444',     // Dark background for dropdowns
+        'color': 'white'                // White text on dropdowns
+      });
+
+      // Optional: Style the placeholder text in dark mode
+      $('.note-placeholder').css({
+        'color': '#bbb'                 // Lighter text color for placeholders
+      });
       }
+      
     }
   });
 

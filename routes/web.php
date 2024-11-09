@@ -102,6 +102,8 @@ Route::prefix('Dashboard')->middleware(['auth'])->group(function () {
     Route::post('/Serie/{id}', [MangaController::class, 'update']);
     Route::delete('/Serie/{id}', [MangaController::class, 'destroy']);
 
+    
+    Route::get('/myprofile', [ProfileController::class, 'myprofile']);
 
 });
 

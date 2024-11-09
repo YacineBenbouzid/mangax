@@ -4,24 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'linkportalx')</title>
+
+
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/variables.css') }}">
+    @yield('styles')
 
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
 
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="{{ asset('template/css/bootstrap.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('template/css/font-awesome.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('template/css/elegant-icons.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('template/css/plyr.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('template/css/nice-select.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('template/css/owl.carousel.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('template/css/slicknav.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('template/css/style.css') }}" type="text/css">
+
     @vite('resources/js/app.js')
     @vite('resources/css/app.css')
     
@@ -31,107 +28,57 @@
         display: flex;
         justify-content: center
     }
-    .log{
-        margin-top: 5px;
-        padding:10px 20px 10px;
-        border-radius: 5px;
-        font-weight: 500;
-
-    }
-    .signupm{
-        background-color: #e53637;
-
-    }
-    .loginm{
-        border-style: solid;
-        border-width: 2px;
-        border-color: rgb(255, 255, 255);
-    }
-    @media only screen and (max-width: 600px) {
-        .flog{
-            position: absolute;
-            padding: 14px;
-            right: 30%;
-            
-        }
-        .log{
-        margin-top: 5px;
-        border-radius: 5px;
-        font-weight: 400;
-        padding:3px 6px;
-        font-size: small;
-        }
-        .loginm{
-        border-width: 1px;
-    }
-    }
+    
 </style>    
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-1">
-                    <div class="header__logo">
-                        <a >
-                            <img src="template/img/logo.png"  alt="">
-                        </a>
-                        
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="header__nav">
-                        <nav class="header__menu mobile-menu">
-                            <ul>
-                                <li class=""><a href="{{route('links.index')}}">Homepage</a></li>
-                                <li><a href="{{route('links.index')}}">Genres <span class="arrow_carrot-down"></span></a>
-                                    <ul class="dropdown">
-
-                                        <li><a href="{{ route('category', 'Action') }}">Action</a></li>
-                                        <li><a href="{{ route('category', 'Adventure') }}">Adventure</a></li>
-                                        <li><a href="{{ route('category', 'Fantasy') }}">Fantasy</a></li>
-                                        <li><a href="{{ route('category', 'Comedy') }}">Comedy</a></li>
-                                        <li><a href="{{ route('category', 'Drama') }}">Drama</a></li>
-                                        <li><a href="{{ route('category', 'Isekai') }}">Isekai</a></li>
-                                        <li><a href="{{ route('category', 'Thriller') }}">Thriller</a></li>
-                                        <li><a href="{{ route('category', 'Sports') }}">Sports</a></li>
-                                        <li><a href="{{ route('category', 'Mystery') }}">Mystery</a></li>
-                                        <li><a href="{{ route('category', 'Martial Arts') }}">Martial Arts</a></li>
-                                        <li><a href="{{ route('category', 'Magic') }}">Magic</a></li>
-                                        <li><a href="{{ route('category', 'Horror') }}">Horror</a></li>
-                                        <li><a href="{{ route('category', 'Sci-Fi') }}">Sci-Fi</a></li>
-                                        <li><a href="{{ route('category', 'Supernatural') }}">Supernatural</a></li>
-                                        <li><a href="{{ route('category', 'Romance') }}">Romance</a></li>
-
-                                    </ul>
-                                </li>
-                                <li><a href="{{route('newestchapters')}}"> New Chapters</a></li>
-                                <li><a href="{{route('newestmangas')}}"> New Stories</a></li>
-                                @auth
-                                <li><a href="{{route('Dashboard')}}"> Dashboard</a></li>
-                                @endauth
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="flog">
-                    <div class="header__right">
-                        @auth
-                        <a  class="log"  href="{{route('login.logout')}}">Log out <span class="icon_profile"></span></a>
-                        
-                        @endauth
-                        @guest
-                        <a class="loginm log" href="{{route('login')}}">Log In</a>
-                        <a class="signupm log" href="{{route('signup')}}">Sign Up</a>
-
-
-                        @endguest
-                    </div>
-                </div>
-            </div>
-            <div id="mobile-menu-wrap"></div>
+    <nav class="nav">
+        <div class="logo">
+            <img src="{{ asset("img/logo.png")}}"  alt="">
         </div>
-    </header>
+        <div class="navlist">
+
+                <a href="{{route('links.index')}}">Homepage</a>
+                <a href="{{route('links.index')}}">Genres <span class="arrow_carrot-down"></span></a>
+
+                
+                <a href="{{route('newestchapters')}}"> New Chapters</a>
+                <a href="{{route('newestmangas')}}"> New Stories</a>
+                @auth
+                <a href="{{route('Dashboard')}}"> Dashboard</a>
+                @endauth
+
+        </div>
+        <div class="navlog">
+            <div class="flog">
+
+                @auth
+                <a  class="log micon"  href="{{route('login.logout')}}"><i class="fa fa-sign-out" style="font-size:40px"></i></a>
+                
+                @endauth
+                @guest
+                <a class="loginm log" href="{{route('login')}}">Log In</a>
+                <a class="micon log" href="{{route('login')}}"><i class="fa fa-user" style="font-size:40px"></i>
+                </a>
+                <a class="signupm log" href="{{route('signup')}}">Sign Up</a>
+
+
+                @endguest
+
+            </div>
+        </div>
+
+        <div class="navmenu">
+            <div class="navcontainer" onclick="myFunction(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+              </div>
+        </div>
+            
+            
+    </nav>
+
     
     <main>
         @yield('content')
@@ -140,14 +87,8 @@
 
     
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('template/js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ asset('template/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('template/js/player.js') }}"></script>
-    <script src="{{ asset('template/js/jquery.nice-select.min.js') }}"></script>
-    <script src="{{ asset('template/js/mixitup.min.js') }}"></script>
-    <script src="{{ asset('template/js/jquery.slicknav.js') }}"></script>
-    <script src="{{ asset('template/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('template/js/main.js') }}"></script>
+    <script src="{{ asset('js/nav.js') }}"></script>
+
 
 
 

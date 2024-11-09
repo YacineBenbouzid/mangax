@@ -124,6 +124,7 @@
         </style>
 @endsection
 @section('content')
+        <div id="not"></div>
     <div id="app">
     </div>
 @endsection

@@ -1,74 +1,14 @@
 @extends('app')
 
 @section('title', 'Home')
+@section('styles')
+<link rel="stylesheet" href="{{ asset('css/newHotSerie.css') }}">
 
+@endsection
 @section('content')
 
 
 
-<style>
-    
-
-    .most-viewed-section {
-        padding: 20px;
-        background-color: #1c1c2b00; /* Dark background for the whole section */
-    }
-
-    .manga-scroll {
-        display: flex;
-        overflow-x: auto; /* Allows horizontal scrolling */
-        padding: 20px 0;
-    }
-
-    .manga-item {
-        position: relative;
-        margin-right: 20px;
-        text-align: center;
-        width: 150px; /* Adjust width based on your image sizes */
-        flex-shrink: 0; /* Prevents the items from shrinking when the screen is small */
-    }
-
-    .manga-item img, .product__item__pic {
-        position: static;
-        width: 150px;
-        height: 220px;
-        object-fit: cover;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    }
-
-    .manga-item h5 {
-        color: #fff;
-        margin-top: 10px;
-    }
-
-    .ranking-number {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: #000;
-        color: #fff;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
-        text-align: center;
-        font-size: 16px;
-        font-weight: bold;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-    }
-
-    /* Optional: Customize scrollbar */
-    .manga-scroll::-webkit-scrollbar {
-        height: 8px;
-    }
-
-    .manga-scroll::-webkit-scrollbar-thumb {
-        background-color: #555;
-        border-radius: 10px;
-    }
-
-</style>
 
 <div class="slider-container">
     <div class="fade left"></div>
@@ -113,40 +53,37 @@
     </div>
 </div>
 
-
+<div class="vide"></div>
 <div id="top10"></div>
 
 
 
+<div class="vide"></div>
 
+<div class="hottitle">
+    <div>New & Trending</div>
+</div>
+<div class="hotserie">
 
-<div class="ad">
+    <div class="left">
 
-
-
-    <div class="dt">
-        <div class="col-lg-8 col-md-8 col-sm-8">
-            <div class="section-title">
-                <h4>New & Trending</h4>
-            </div>
-        </div>
         @if(isset($smanga))
-        <div class="">
+        <div class="w40 tor">
             <div class="">
-                <div class="">
-                    <div class="anime__details__pic set-bg" data-setbg="{{ asset('storage/' . $smanga->image) }}">
+                <div class="cover">
+                    <img  src="{{ asset('storage/' . $smanga->image) }}"/>
                         
-                    </div>
+                    
                 </div>
                 <div class="">
-                    <div class="anime__details__text">
-                        <div class="anime__details__title">
+                    <div class="animedetailstext">
+                        <div class="animedetailstitle">
                             <h3>{{$smanga->name}}</h3>
                         </div>
 
                         <p>{!! $smanga->description !!}</p>
 
-                        <div class="anime__details__widget">
+                        <div class="animedetailswidget">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6">
                                     <ul>
@@ -168,18 +105,15 @@
         </div>
         @endif
     </div>
-    <div class="chu manga-scroll">
-        <div>
+    <div class="right -">
+        <div class="w40 tol">
             <div class="chapter">
 
 
-                <!-- Webcomic Profile Section -->
-                
-            
-                <!-- Chapters Section -->
-                <div class="chapters-section">
+
+                <div class="chapterssection">
                     
-                    <ul class="chapter-list">
+                    <ul class="chapterlist">
                         @foreach ( $chapters as $chapter )
                             <a href="{{$chapter->link}}"><li><img class="chi" src="{{ asset('storage/' . $chapter->image) }}">Chapter 1:{{$chapter->n_chapter}} <span>{{$chapter->date}}</span></li></a>
                         @endforeach
@@ -192,31 +126,13 @@
 </div>
 
 
-<style>
-    .ad{
-        padding: 10vw;
-    }
-    .dt{
-        width: 30vw;
-    }
-    .chu{
-        width: 40vw;
-    }
-    @media only screen and (max-width: 600px) {
-        .dt{
-        width: 70vw;
-    }
-    .chu{
-        width: 70vw;
-    }
-    }
-</style>
+
 <style>
 
     .slider-container {
 
-
-        width: 90vw;
+        margin-top: 10vh;
+        width: 100;
         height: 300px;
         overflow: hidden;
         position: relative;
@@ -241,9 +157,15 @@
         transform: translateX(-40vw);
     }
     .slide {
-        padding: 2rem;
+        display: flex;
+        justify-content: center;
         width: 60vw;
         height: 300px;
+    }
+    .slide a {
+        display: flex;
+        justify-content: center;
+        width: 95%;
     }
     .slide img {
         border-radius: 5px;
@@ -268,29 +190,48 @@
         right: 0;
         background: rgba(0, 0, 0, 0);
     }
+
 </style>
 
 <script>
-    let currentSlide = 1; // Start from the first real image (not the clone)
+    let currentSlide = 0; // Start from the first real image (not the clone)
     const sliderData = @json($slider);
 
-
     const totalSlides = sliderData.length;
+    let slideWidth;
+    if(600 < window.innerWidth){
+        slideWidth = 60; 
+    }else{
+
+        slideWidth = 100; 
+    }
+
+    const def = 100-slideWidth;
     const slider = document.getElementById('slider');
-    const slide = document.getElementById('slide');
+    //const slide = document.getElementById('slide');
     const sliderElement = document.querySelector('.slider');
-    sliderElement.style.width = `calc(60vw *${totalSlides+4}`;
+    let ts=totalSlides + 4
+    sliderElement.style.width = `calc(${slideWidth * ts}vw)`;
+    sliderElement.style.transform= `translateX(${def})`
+    const slidest = document.querySelectorAll('.slide');
+
+    slidest.forEach(slide => {
+    slide.style.width = `${slideWidth}vw`; // Set the width you want here
+    });
 
 
-    const slideWidth = 60; 
+    
 
     const slides = slider.children;
     slides[0].style.opacity = '0.5'; 
     slides[2].style.opacity = '0.5';
 
+
+
+
     function moveSlider() {
         currentSlide++;
-        slider.style.transform = `translateX(-${(currentSlide * slideWidth) - 20}vw)`;
+        slider.style.transform = `translateX(-${(currentSlide * slideWidth) - def/2}vw)`;
         const slides = slider.children;
         if (slides.length > 1) { 
             slides[currentSlide-1].style.opacity = '0.5'; 
@@ -314,7 +255,7 @@
                 }
                 
 
-                slider.style.transform = `translateX(-${(currentSlide * slideWidth) - 20}vw)`;                setTimeout(() => {
+                slider.style.transform = `translateX(-${(currentSlide * slideWidth) - def/2}vw)`;                setTimeout(() => {
                     slider.style.transition = 'transform 500ms ease'; // Re-enable the transition
                 }, 50); // Small delay to allow browser to repaint
             }, 2000); // Wait for the transition to complete before resetting

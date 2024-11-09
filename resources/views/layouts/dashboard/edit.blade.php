@@ -7,9 +7,10 @@
     .container {
         max-width: 800px;
         margin: 0 auto;
-        background-color: #1a1c2c; /* Dark background */
+        background-color: var(--secondary); /* Dark background */
+        
         padding: 20px;
-        border-radius: 8px;
+        
         /*color: #e0e0e0; /* Light text color */
     }
 

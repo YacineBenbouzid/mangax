@@ -85,4 +85,15 @@ class ProfileController extends Controller
         $profile = Profile::findOrFail($id); // Get the authenticated user's profile
         return view('layouts.dashboard.showProfile', compact('profile'));
     }
+    public function myprofile()
+    {
+        $user = auth()->user();
+    
+        return [
+            'name' => $user->name,
+            'profile_picture' => $user->profile->image ?? null
+        ];
+    }
+    
+    
 }

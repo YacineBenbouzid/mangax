@@ -6,25 +6,23 @@
     <div v-if="isAddChapterVisible" class="newchapter">
       <div class="mmf">
         
-            <button class="childd" @click="close" >close    <i class="fa fa-close"></i></button>
+           
           
-        <CreateNewChapter :mangaId="id" />
+        <CreateNewChapter :mangaId="id" @updateValue="updateParentValue"/>
       </div>
     </div>
     <div  v-if="isAddSerieVisible" class="newmanga">
       <div class="mmf">
         
-            <button class="childd" @click="close">close    <i class="fa fa-close"></i></button>
           
-        <CreateNewSeies :message="id" />
+        <CreateNewSeies :message="id" @updateValue="updateParentValue" />
       </div>
     </div>
     <div  v-else-if="iseditVisible" class="newmanga">
       <div class="mmf">
         
-            <button class="childd" @click="edit" >close    <i class="fa fa-close"></i></button>
           
-        <CreateNewSeies :message="id"/>
+        <CreateNewSeies :message="id" @updateValue="updateParentValue"/>
       </div>
     </div>
     <div v-else class="prod">
@@ -50,12 +48,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'; // Import required functions
+import { ref, onMounted } from 'vue'; 
 import axios from 'axios';
 import CreateNewChapter from './components/CreateNewChapter.vue';
 import CreateNewSeies from './components/CreateNewSerie.vue';
 
-const mangas = ref([]); // Reactive reference for mangas
+const mangas = ref([]); 
 const error = ref(null);
 const id = ref(0);
 const p = ref(2);
@@ -64,21 +62,27 @@ const isAddChapterVisible = ref(false);
 const isAddSerieVisible = ref(false);
 const iseditVisible  = ref(false);
 
+const updateParentValue=(value)=>{
+  iseditVisible.value=value
+  isAddSerieVisible.value=value
+}
 const AddChapter = (idd) => {
   id.value=idd;
-  isAddChapterVisible.value = !isAddChapterVisible.value; // Toggle visibility
+  isAddChapterVisible.value = !isAddChapterVisible.value; 
   
 
 };
 
 const AddSerie = () => {
   id.value=null;
-  isAddSerieVisible.value = !isAddSerieVisible.value; // Toggle visibility
+  isAddSerieVisible.value = !isAddSerieVisible.value; 
+  iseditVisible.value=false
   
 };
 const edit = (idd) => {
   id.value = idd;
   iseditVisible.value = !iseditVisible.value;
+  isAddSerieVisible.value =false
 };
 
 const close = () => {
@@ -125,6 +129,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
+
 body{
   font-family: "Mulish", sans-serif;
 }
@@ -218,5 +223,7 @@ body{
   font-weight: 550;
   font-size: x-large;
 }
-
+.mmf{
+  background-color: black;
+}
 </style>

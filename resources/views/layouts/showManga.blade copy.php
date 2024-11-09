@@ -16,8 +16,6 @@
                             <div class="">
                                 <div class="col-lg-10">
                                     <div class="anime__details__pic set-bg" data-setbg="{{ asset('storage/' . $manga->image) }}">
-                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
-                                        <div class="view"><i class="fa fa-eye"></i> {{$manga->nviews}}</div>
                                     </div>
                                 </div>
                                 <div class="col-lg-9">
@@ -32,15 +30,14 @@
                                             <div class="row">
                                                 <div class="col-lg-6 col-md-6">
                                                     <ul>
-                                                        <li><span>Type:</span> TV Series</li>
+                                                        <li><span>Type:</span> {{$manga->type}}</li>
 
-                                                        <li><span>Genre:</span> Action, Adventure, Fantasy, Magic</li>
+                                                        <li><span>Genre:</span> {{$manga->genre_1 }}&nbsp; &nbsp;  {{ $manga->genre_2 }}&nbsp; &nbsp;  {{ $manga->genre_3}}</li>
                                                     </ul>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6">
                                                     <ul>
 
-                                                        <li><span>Views:</span> 131,541</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -57,11 +54,12 @@
 
                                             @endauth
                                             @guest
-                                            <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
+                                            <a href="{{ route('login') }}" class="follow-btn"><i class="fa fa-heart-o"></i> Follow</a>
 
 
                                             @endguest
                                             
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -89,24 +87,26 @@
                         </div>
                     </div>
                 </div>
-
+ <div id="chapters"></div>
                     <div class="row">
                         <div class="col-lg-8 col-md-8">
                             <div class="anime__details__review">
-                                <div id="cmnt"></div>
                                 <div class="section-title">
                                     <h5>Comments</h5>
                                 </div>
-                                
+                                    
+                                    @foreach ($comments as $comment)
+
                                 <div class="anime__review__item">
                                     <div class="anime__review__item__pic">
                                         <img src="img/anime/review-6.jpg" alt="">
                                     </div>
                                     <div class="anime__review__item__text">
-                                        <h6>Louis Tyler - <span>20 Hour ago</span></h6>
-                                        <p>Where is the episode 15 ? Slow update! Tch</p>
+                                        <h6>{{ $comment->user->name }} - <span>{{ $comment->created_at->diffForHumans() }} ago</span></h6>
+                                        <p>{{ $comment->body }}</p>
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
                             <div class="anime__details__form">
                                 <div class="section-title">
@@ -127,16 +127,3 @@
 
 @endsection
 
-
-
-
-
-
-
-------
-<div class="tt">
-                            <input type="radio" name="role" value="company_user" required>
-                            <label class="wh" for="name">company user</label>
-                            <input type="radio" name="role"  value="creator_user" required>
-                            <label class="wh" for="name">creator user</label>
-                        </div>
