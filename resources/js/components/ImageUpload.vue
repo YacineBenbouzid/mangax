@@ -3,7 +3,7 @@
     <input type="file" @change="onImageSelected" accept="image/*" /> 
     <div v-if="imagePreview"></div>
     <div class="label" v-else>
-      <i class="fa fa-upload"></i>
+      <i class="fa fa-plus-circle"></i>
       <p>Click or Drag to Upload Image</p>
     </div>
     <div v-if="imagePreview" class="image-preview-container" >

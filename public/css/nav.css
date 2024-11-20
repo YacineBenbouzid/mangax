@@ -48,12 +48,13 @@
 }
 .log{
     display: flex;
+    font-size: medium;
     height: fit-content;
     padding: 10px 0;
     justify-content: center;
     width: 40%;
     border-radius: 5px;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--navColor);
     font-family: var(--fontNav);
     text-decoration: none;

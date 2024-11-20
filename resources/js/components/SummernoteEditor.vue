@@ -51,6 +51,7 @@ const initializeEditor = async () => {
 
 // onMounted hook to initialize Summernote and set initial content
 onMounted(() => {
+  console.log(2);
   console.log(props.initialContent);
   
   $(summernote.value).summernote({
@@ -84,10 +85,10 @@ onMounted(() => {
       });
 
       // Style the buttons in the toolbar
-      $('.note-btn').css({
+      /*$('.note-btn button').css({
         'background-color': '#444',     // Dark button background
         'color': 'white'                // White text on buttons
-      });
+      });*/
 
       // Style the dropdowns, popups, and other UI components
       $('.note-dropdown').css({
