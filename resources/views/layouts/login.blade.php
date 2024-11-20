@@ -17,11 +17,11 @@
             <form action="{{ route('login.store') }}" method="POST">
                 @csrf
                 <div class="input_item">
-                    <input type="text" name="email" placeholder="Email address">
+                    <input type="email" name="email" placeholder="Email address">
                     <span class="icon_mail"></span>
                 </div>
                 <div class="input_item">
-                    <input type="text" name="password" placeholder="Password">
+                    <input type="Password" name="password" placeholder="Password">
                     <span class="icon_lock"></span>
                 </div>
                 @error('email')

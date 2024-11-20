@@ -49,10 +49,13 @@
 
         <div class="sec">
           <!-- File Upload -->
+          <label>Cover *</label>
           <ImageUpload :width="436" :height="436" :image="form.image" @image-uploaded="handleImageUpload" />
+          <label>Banner *</label>
+          <ImageUpload :width="1920" :height="789" :image="form.banner" @image-uploaded="handleImageUploadBanner" />
 
           <!-- Description -->
-          <SummernoteEditor class="sum" :initialContent="description" @update:content="updateDescription" aria-required="true"/>
+          <SummernoteEditor v-if="loaded" class="sum" :initialContent="description" @update:content="updateDescription" aria-required="true"/>
         </div>
       </div>
       
@@ -84,7 +87,7 @@ import 'vue3-toastify/dist/index.css';
 const props = defineProps({
   message: Number
 });
-
+const loaded = ref(false);
 const description = ref(null);
 const vgenres = ref(genres);
 const loading = ref(false); // New loading state
@@ -98,6 +101,8 @@ const form = ref({
   genre_2: '',
   genre_3: '',
   image: '',
+  banner: '',
+  description:'',
 });
 
 onMounted(() => {
@@ -107,9 +112,10 @@ onMounted(() => {
 const handleImageUpload = (imageData) => {
   form.value.image = imageData; // Receive the image data from the child component
 }
-const ggt = () => {
-  toast("Wow so easy !", {autoClose: 1000,});
-  }
+const handleImageUploadBanner = (imageData) => {
+  form.value.banner = imageData; // Receive the image data from the child component
+}
+
 
 const updateDescription = (content) => {
   description.value = content; // Update the description with emitted content
@@ -138,10 +144,14 @@ const GetDataForUpdate = async () => {
       });
       form.value = response.data.data;
       description.value = response.data.data.description;
+
+      loaded.value=true
     } catch (error) {
       console.error('Form submission error:', error);
       
     }
+  }else{
+    loaded.value=true
   }
 };
 
@@ -154,6 +164,7 @@ const submitForm = async () => {
   formData.append('genre_2', form.value.genre_2);
   formData.append('genre_3', form.value.genre_3);
   formData.append('image', form.value.image);
+  formData.append('banner', form.value.banner);
   formData.append('description', description.value);
 
   try {
@@ -179,7 +190,7 @@ const submitForm = async () => {
     }
     
 
-    form.value = { name: '', type: '', genre_1: '', genre_2: '', genre_3: '', image: '' };
+    form.value = { name: '', type: '', genre_1: '', genre_2: '', genre_3: '', image: '' , banner: '' };
     description.value = '';
   } catch (error) {
     console.error('Form submission error:', error);

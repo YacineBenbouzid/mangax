@@ -81,7 +81,7 @@
                             <h3>{{$smanga->name}}</h3>
                         </div>
 
-                        <p>{!! $smanga->description !!}</p>
+                        <p class="descrotion">{!! $smanga->description !!}</p>
 
                         <div class="animedetailswidget">
                             <div class="row">

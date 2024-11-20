@@ -11,7 +11,7 @@ class manga extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['image', 'description', 'name','user_id','nviews'];
+    protected $fillable = ['image', 'description', 'name','user_id','nviews','banner'];
     public function chapters(): HasMany 
     {
         return $this->hasMany(Chapter::class);

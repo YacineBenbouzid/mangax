@@ -104,5 +104,5 @@ Route::middleware('auth')->group(function () {
 });
 Route::get('/profile/show/{id}', [ProfileController::class, 'show'])->name('profile.show');
 
-});
+
 
