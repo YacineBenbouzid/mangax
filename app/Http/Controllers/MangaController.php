@@ -41,6 +41,7 @@ class MangaController extends Controller
 
         $validatedData = $request->validate([
             'image' => 'required',
+            'banner' => 'required',
             'description' => 'required',
             'name'  => 'required|string|max:255',
             'type'  => 'required|string|max:255',
@@ -54,11 +55,13 @@ class MangaController extends Controller
         $imagePath ="";
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('images', 'public');  // Save image in 'storage/app/public/images'
+            $imagePath2 = $request->file('banner')->store('images', 'public');  // Save image in 'storage/app/public/images'
         }
 
         try {
             $manga = new Manga();
             $manga->image = $imagePath;
+            $manga->banner = $imagePath2;
             $manga->description = $validatedData['description'];
             $manga->name = $validatedData['name'];
             $manga->type = $validatedData['type'];

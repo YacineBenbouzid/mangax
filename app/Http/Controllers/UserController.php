@@ -16,7 +16,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        // Validate the request
+        
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'role' => 'required|string',  // You may want to specify accepted roles if necessary
@@ -24,11 +24,11 @@ class UserController extends Controller
             'password' => [
                 'required',
                 'string',
-                'min:8',             // Minimum 8 characters
-                'regex:/[a-z]/',      // At least one lowercase letter
-                'regex:/[A-Z]/',      // At least one uppercase letter
-                'regex:/[0-9]/',      // At least one digit
-                'regex:/[\W_]/',      // At least one special character
+                'min:8',             
+                'regex:/[a-z]/',     
+                'regex:/[A-Z]/',     
+                'regex:/[0-9]/',     
+                'regex:/[\W_]/',     
             ],
         ]);
         
@@ -39,6 +39,7 @@ class UserController extends Controller
             'role'  => $validated['role'],
             'password' => Hash::make($validated['password']), // Hashing password before storing
         ]);
+        
         Profile::create([
             'user_id' => $user->id,  // Foreign key to the user
             'first_name' => '', // Or set default values if necessary
@@ -53,7 +54,7 @@ class UserController extends Controller
             'profile_picture' => '',
             'public_visibility' => false,
         ]);
-    
+        
         // Regenerate session ID to avoid session fixation attacks
         $credentials= ['email'=>$request->email,'password'=>$request->password];
         if(Auth::attempt($credentials)){

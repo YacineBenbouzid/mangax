@@ -33,9 +33,12 @@
 </head>
 <body>
     <nav class="nav">
-        <div class="logo">
-            <img src="{{ asset("img/logo.png")}}"  alt="">
-        </div>
+        
+        <a href="{{route('links.index')}}" class="logo">
+            
+            <img  src="{{ asset("img/logo.png")}}"  alt="">
+            
+        </a>
         <div class="navlist">
 
                 <a href="{{route('links.index')}}">Homepage</a>
@@ -54,6 +57,7 @@
 
                 @auth
                 <a  class="log micon"  href="{{route('login.logout')}}"><i class="fa fa-sign-out" style="font-size:40px"></i></a>
+                <a  class="log"  href="{{route('login.logout')}}">Log out &nbsp;&nbsp;<i class="fa fa-sign-out" style="font-size:20px"></i></a>
                 
                 @endauth
                 @guest

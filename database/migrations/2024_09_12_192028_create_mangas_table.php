@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('mangas', function (Blueprint $table) {
             $table->id();
             $table->string( 'image');
+            $table->string( 'banner');
             $table->string('name');
             $table->text('description')->nullable();;
             $table->integer('nviews')->default(0); // Set default value to 0

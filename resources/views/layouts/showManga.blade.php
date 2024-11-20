@@ -140,7 +140,7 @@
 </style>
 @endsection
 @section('content')
-<div class="hotserie">
+<div class="hotserie showbg" style="background-image: url('{{ asset('storage/' . $manga->banner) }}');">
 
     <div class="left">
 
@@ -158,7 +158,7 @@
                             <h3>{{$manga->name}}</h3>
                         </div>
 
-                        <p>{!! $manga->description !!}</p>
+                        <p class="descrotion">{!! $manga->description !!}</p>
 
                         <div class="animedetailswidget">
                             <div class="row">

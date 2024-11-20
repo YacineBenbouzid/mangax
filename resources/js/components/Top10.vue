@@ -34,9 +34,10 @@
                                     </div>
                                     <div class="product__item__text">
                                         <ul>
-                                            <li v-if="manga.genre_1">{{ manga.genre_1 }}</li>
-                                            <li v-if="manga.genre_2">{{ manga.genre_2 }}</li>
-                                            <li v-if="manga.genre_3">{{ manga.genre_3 }}</li>
+                                          <li v-show="manga.genre_1 != 'null' ">{{ manga.genre_1 }}</li>
+                                          <li v-show="manga.genre_2 != 'null' ">{{ manga.genre_2 }}</li>
+                                          <li v-show="manga.genre_3 != 'null' ">{{ manga.genre_3 }}</li>
+
                                         </ul>
                                         
                                     </div>
@@ -201,6 +202,9 @@ onMounted(() => {
       object-fit: cover;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      background-size: 100% auto; 
+      background-repeat: no-repeat;
+      background-position: center;
   }
 
   .manga-item h5 {
@@ -224,7 +228,7 @@ onMounted(() => {
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   }
   .most-viewed-section{
-    width: 100vw;
+    width: 98vw;
   }
   /* Optional: Customize scrollbar */
   .manga-scroll::-webkit-scrollbar {
