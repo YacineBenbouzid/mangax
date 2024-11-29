@@ -5,10 +5,10 @@
 <link rel="stylesheet" href="{{ asset('css/singin.css') }}">
 
 @endsection
-@section('content')
+@section('content') 
 <div class="logcontent">
     <h1>Sign Up</h1>
-    <h3>Welcome to LinkPortalX—the first platform that legally connects all your favorite stories! Bookmark series, explore new titles, and support creators with every click that takes you to their original site. Dive into endless adventures and enjoy your haven for stories!</h3>
+    <h3>Welcome to LinkPortalX the first platform that legally connects all your favorite stories! Bookmark series, explore new titles, and support creators with every click that takes you to their original site. Dive into endless adventures and enjoy your haven for stories!</h3>
 </div>
 <div class="vide"></div>
 <div class="singin">
@@ -25,8 +25,8 @@
                     <span class="icon_profile"></span>
                 </div>
                 <div class="input_item">
-                    <input type="password" name="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
-                    title="Must contain at least 8 characters, including an uppercase letter, a lowercase letter, a number, and a special character" required>
+                    <input type="password" name="password" placeholder="Password" pattern=".{8,}"
+                    title="Must contain at least 8 characters" required>
                     <span class="icon_lock"></span>
                 </div>
 

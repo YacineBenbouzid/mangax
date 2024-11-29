@@ -9,6 +9,7 @@ use App\Http\Controllers\SliderController;
 use App\Http\Controllers\MangaController;
 use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,7 +64,7 @@ Route::get('/logout', [UserController::class, 'logout'])->name('login.logout');
 
 Route::get('/Dashboard', [UserController::class, 'lead'])->name('Dashboard');
 
-Route::prefix('Dashboard')->middleware(['auth'])->group(function () {
+Route::prefix('Dashboard')->middleware(['auth','verified'])->group(function () {
     Route::get('/admin', function () {
         return view('layouts/dashboard/admin');
     })->middleware(['role:admin']);
@@ -106,3 +107,10 @@ Route::get('/profile/show/{id}', [ProfileController::class, 'show'])->name('prof
 
 
 
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [RegisterController::class, 'register']);
+
+// Email Verification Routes
+Route::get('email/verify', [VerificationController::class, 'show'])->name('verification.notice');
+Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
+Route::post('email/resend', [VerificationController::class, 'resend'])->name('verification.resend');

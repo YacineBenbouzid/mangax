@@ -8,7 +8,12 @@
     --fontTitle:"Oswald", sans-serif;
     --fontNav:"Mulish", sans-serif;
     --navColor:#b7b7b7;
+    /*--blue:var(--purple);*/
     --genre:rgba(255, 255, 255, 0.2);
     --fontsignUp:"Mulish", sans-serif;
+    --purple:rgb(75, 0, 130) /* Indigo */
+
+
+
   }
   

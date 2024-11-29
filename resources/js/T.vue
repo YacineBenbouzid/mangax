@@ -11,7 +11,7 @@
         <CreateNewChapter :mangaId="id" @updateValue="updateParentValue"/>
       </div>
     </div>
-    <div  v-if="isAddSerieVisible" class="newmanga">
+    <div  v-else-if="isAddSerieVisible" class="newmanga">
       <div class="mmf">
         
           
@@ -40,7 +40,7 @@
         </div>
       </ul>
 
-      <p v-else>No mangas found.</p>
+      <h2 style="margin-top: 40vh;font-weight: 500;" v-else>No mangas found.</h2>
       <p v-if="error">{{ error }}</p>
     </div>
   </div>
@@ -65,11 +65,14 @@ const iseditVisible  = ref(false);
 const updateParentValue=(value)=>{
   iseditVisible.value=value
   isAddSerieVisible.value=value
+  isAddChapterVisible.value=value
+  fetchMangas();
 }
 const AddChapter = (idd) => {
   id.value=idd;
   isAddChapterVisible.value = !isAddChapterVisible.value; 
-  
+  isAddSerieVisible.value =false
+  iseditVisible.value=false
 
 };
 
@@ -77,21 +80,18 @@ const AddSerie = () => {
   id.value=null;
   isAddSerieVisible.value = !isAddSerieVisible.value; 
   iseditVisible.value=false
-  
+  isAddChapterVisible.value = false
+
 };
 const edit = (idd) => {
   id.value = idd;
   iseditVisible.value = !iseditVisible.value;
   isAddSerieVisible.value =false
+  isAddChapterVisible.value = false
+
 };
 
-const close = () => {
-  isAddChapterVisible.value = false;
-  isAddSerieVisible.value = false;
-  iseditVisible.value = false;
-  id.value = null;
-  fetchMangas();
-};
+
 
 const deleteManga = async (id) => {
   if (confirm("Are you sure you want to delete this manga?")) {
@@ -226,4 +226,5 @@ body{
 .mmf{
   background-color: black;
 }
+
 </style>

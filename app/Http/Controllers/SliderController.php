@@ -11,28 +11,23 @@ class SliderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'manga_id' => 'required|string|max:255',
-            'image' => 'required|file', 
+            'manga_id' => 'required|string',
         ]);
 
-        $imagePath = "";
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images', 'public');
-        }
+        
 
         $slider = Slider::create([
-            'manga_id' => $request->manga_id,
-            'image' => $imagePath,
+            'manga_id' => $request->manga_id
         ]);
 
         return response()->json(['story' => $slider], 201);
     }
 
     public function show()
-{
-    $sliders = Slider::all();
-    return response()->json(['data' => $sliders], 200);
-}
+    {
+        $sliders = Slider::with('manga')->get();
+        return response()->json(['data' => $sliders], 200);
+    }
 
 
     public function destroy($id)

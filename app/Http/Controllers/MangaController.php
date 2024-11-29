@@ -152,9 +152,23 @@ class MangaController extends Controller
         $slider = Manga::orderBy('nvw', 'desc')
                         ->take(6)
                         ->get();
+
+        /*$slider = $slider->map(function ($item) {
+            $item->manga_id = $item->id;
+            unset($item->id);
+            return $item;
+        });*/
+
     } else {
         // Retrieve all sliders
-        $slider = Slider::all();
+        $sliders = Slider::with('manga')->get();
+        $slider = $sliders->pluck('manga')->flatten();
+
+        /*$slider = $slider->map(function ($item) {
+            $item->banner = $item->image;
+            unset($item->image);
+            return $item;
+        });*/
     }
 
         return view('layouts.home', compact('links','mangas_10','recentMangas','newAndTrending','smanga','chapters','slider'));

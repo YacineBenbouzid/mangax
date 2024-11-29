@@ -10,10 +10,10 @@ class Slider extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['image','manga_id'];
+    protected $fillable = ['manga_id'];
 
 
-    public function mUpdate(Request $request){
+    /*public function mUpdate(Request $request){
         // Validate the request inputs
         $request->validate([
             'image1' => 'nullable',
@@ -54,9 +54,18 @@ class Slider extends Model
         return response()->json([
             'message' => 'Sliders saved successfully!',
         ]);
-    }
-    public function show(){
+    }*/
+    // App\Models\Slider.php
+
+
+
+    /*public function show(){
         $slider = Slider::All();
         return response()->json(['data' => '$slider'], 200);
+    }*/
+    public function manga()
+    {
+        return $this->belongsTo(Manga::class);
     }
+
 }

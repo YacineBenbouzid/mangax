@@ -21,4 +21,9 @@ class manga extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function slider()
+    {
+        return $this->belongsTo(Slider::class);
+    }
+
 }
