@@ -91,13 +91,10 @@
             .newchapter{
                 display: flex;
                 justify-content: center;
-                position: absolute;
-
-                top: 0;
-                left: 0;
                 background-color: rgb(0, 0, 0);
                 margin-right: 20px;
-                width: 100vw;
+                width: 100%;
+                justify-content: center;
                 overflow: visible;
             }
 

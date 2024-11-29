@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
             $table->foreignId('manga_id')->constrained()->onDelete('cascade'); // Associated post or content
             $table->timestamps();
         });

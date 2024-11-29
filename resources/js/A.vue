@@ -4,11 +4,11 @@
   <section v-if="featureEnabled" class="story-slide">
     <h2>Featured Sliders</h2>
     <div class="slider-container">
-      <div 
+      <div  
         class="slide-item" 
         v-for="(slider, index) in sliders" 
         :key="slider.id">
-        <img :src="`/storage/${slider.image}`" :alt="slider.manga_id" class="slide-image">
+        <img :src="`/storage/${slider.manga.banner}`" :alt="slider.manga_id" class="slide-image">
         <h3 class="story-title"></h3>
         <button @click="deleteStory(slider.id)" class="delete-button">Delete</button>
       </div>
@@ -22,14 +22,7 @@
       </option>
     </select>
 
-    <div class="imagein">
-      <ImageUpload 
-        :width="800" 
-        :height="300" 
-        :image="newSlider.image" 
-        @image-uploaded="(file) => handleImageUpload(file)" 
-      />
-    </div>
+
     
     <button @click="addStory" class="add-button">Add Story</button>
   </section>
@@ -74,13 +67,15 @@ const fetchStories = async () => {
       },
     });
     stories.value = response.data.data;
+    
+    console.log(stories.value)
   } catch (error) {
     console.error('Error fetching stories:', error);
   }
 };
 
 const addStory = async () => {
-  if (newSlider.value.manga_id && newSlider.value.image) {
+  if (newSlider.value.manga_id ) {
     try {
       const formData = new FormData();
       formData.append('manga_id', newSlider.value.manga_id);
@@ -93,11 +88,7 @@ const addStory = async () => {
         },
       });
 
-      sliders.value.push({
-        id: response.data.story.id,
-        manga_id: response.data.story.manga_id,
-        image: response.data.story.image,
-      });
+      fetchSlider();
 
       newSlider.value.manga_id = '';
       newSlider.value.image = '';
@@ -135,7 +126,7 @@ onMounted(() => {
   width: 90%;
   margin: auto;
   padding: 20px;
-  background-color: #f8f9fa;
+  background-color: #191C24 !important;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -197,8 +188,8 @@ onMounted(() => {
   margin: 10px 0;
   border-radius: 4px;
   border: 1px solid #ddd;
-  background-color: #ffffff;
-  color: #333;
+  background-color: #191C24 !important;
+  color: var(--white);
 }
 .imagein{
   display: flex;

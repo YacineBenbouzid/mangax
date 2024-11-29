@@ -248,9 +248,11 @@ button:hover {
     background-color: #555; /* Slightly lighter on hover */
 }
 
-/* Close button specific styling */
+.close{
+  opacity: 1;
+}
 .close button {
-    background-color: #d9534f; /* Dark red for close button */
+    background-color: #EB1616; /* Dark red for close button */
     color: white;
     padding: 8px 16px;
     border-radius: 4px;

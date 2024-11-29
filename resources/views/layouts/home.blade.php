@@ -16,10 +16,12 @@
     <div class="slider" id="slider">
         
         <!-- Clone of the last image for looping -->
+         
         @if($slider->isNotEmpty())
+        
         <div class="slide">
-            <a href="{{ url('/manga/' . $slider->last()->manga_id) }}">
-                <img src="{{ asset('storage/' . $slider->last()->image) }}" alt="Image {{ $slider->last()->id }}">
+            <a href="{{ url('/manga/'.$slider->last()->id) }}">
+                <img src="{{ asset('storage/' . $slider->last()->banner) }}" alt="Image {{ $slider->last()->id }}">
             </a>
         </div>
         @endif
@@ -27,8 +29,8 @@
         <!-- Original images -->
         @foreach($slider as $slide)
         <div class="slide">
-            <a href="{{ url('/manga/' . $slide->manga_id) }}">
-                <img src="{{ asset('storage/' . $slide->image) }}" alt="Image {{ $slide->id }}">
+            <a href="{{ url('/manga/' . $slide->id) }}">
+                <img src="{{ asset('storage/' . $slide->banner) }}" alt="Image {{ $slide->id }}">
             </a>
         </div>
         @endforeach
@@ -36,14 +38,14 @@
         <!-- Clone of the first image for looping -->
         @if($slider->isNotEmpty())
         <div class="slide">
-            <a href="{{ url('/manga/' . $slider->first()->manga_id) }}">
-                <img src="{{ asset('storage/' . $slider->first()->image) }}" alt="Image {{ $slider->first()->id }}">
+            <a href="{{ url('/manga/' . $slider->first()->id) }}">
+                <img src="{{ asset('storage/' . $slider->first()->banner) }}" alt="Image {{ $slider->first()->id }}">
             </a>
         </div>
         @if($slider->count() > 1)
             <div class="slide">
-                <a href="{{ url('/manga/' . $slider->get(1)->manga_id) }}">
-                    <img src="{{ asset('storage/' . $slider->get(1)->image) }}" alt="Image {{ $slider->get(1)->id }}">
+                <a href="{{ url('/manga/' . $slider->get(1)->id) }}">
+                    <img src="{{ asset('storage/' . $slider->get(1)->banner) }}" alt="Image {{ $slider->get(1)->id }}">
                 </a>
             </div>
         @endif
@@ -274,7 +276,6 @@
         }
     }
 
-    // Automatically move the slider every 4 seconds
-    setInterval(moveSlider, 4000); // 4 seconds interval for smooth autoplay
+    setInterval(moveSlider, 4000); 
 </script>
 @endsection

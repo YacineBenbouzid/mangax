@@ -7,6 +7,8 @@ use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+
 use Redirect;
 use Session;
 
@@ -25,10 +27,10 @@ class UserController extends Controller
                 'required',
                 'string',
                 'min:8',             
-                'regex:/[a-z]/',     
+                /*'regex:/[a-z]/',     
                 'regex:/[A-Z]/',     
                 'regex:/[0-9]/',     
-                'regex:/[\W_]/',     
+                'regex:/[\W_]/', */    
             ],
         ]);
         
@@ -44,7 +46,7 @@ class UserController extends Controller
             'user_id' => $user->id,  // Foreign key to the user
             'first_name' => '', // Or set default values if necessary
             'last_name' => '',
-            'username' => '',
+            'username' => $user->name,
             'email' => $user->email,
             'phone' => '',
             'birthday' => null,
@@ -54,15 +56,14 @@ class UserController extends Controller
             'profile_picture' => '',
             'public_visibility' => false,
         ]);
-        
-        // Regenerate session ID to avoid session fixation attacks
         $credentials= ['email'=>$request->email,'password'=>$request->password];
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect('Dashboard')->with('success', 'User created successfully!');
         }
-    
-        // Redirect to the dashboard with a success message
+        $user->sendEmailVerificationNotification();
+
+        return redirect()->route('verification.notice');
+
     }
 
     public function login(Request $request)

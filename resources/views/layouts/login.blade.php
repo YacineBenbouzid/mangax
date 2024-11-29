@@ -3,12 +3,17 @@
 @section('title', 'Sign in')
 @section('styles')
 <link rel="stylesheet" href="{{ asset('css/singin.css') }}">
-
+<style>
+    .span{
+        color: var(--red);
+        font-family: var(--fontNav); 
+    }
+</style>
 @endsection
 @section('content')
 <div class="logcontent">
     <h1>Sign Up</h1>
-    <h3>Welcome to LinkPortalX—the first platform that legally connects all your favorite stories! Bookmark series, explore new titles, and support creators with every click that takes you to their original site. Dive into endless adventures and enjoy your haven for stories!</h3>
+    <h3>Welcome to LinkPortalX the first platform that legally connects all your favorite stories! Bookmark series, explore new titles, and support creators with every click that takes you to their original site. Dive into endless adventures and enjoy your haven for stories!</h3>
 </div>
 <div class="vide"></div>
 <div class="singin">
@@ -25,7 +30,7 @@
                     <span class="icon_lock"></span>
                 </div>
                 @error('email')
-                    <span class="text-danger">{{  $message }}</span>
+                    <span class="span">{{  $message }}</span>
                 @enderror
                 <button type="submit" class="signuptbutton">Login Now</button>
             </form>

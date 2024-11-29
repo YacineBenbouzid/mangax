@@ -1,0 +1,87 @@
+footer.footer {
+    background-color: #222; /* Dark background */
+    color: #fff; /* Light text */
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+footer .page-up {
+    margin-bottom: 20px;
+}
+
+footer .page-up a {
+    display: inline-block;
+    background-color: #7851A9; /* Royal Purple */
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+}
+
+footer .page-up a:hover {
+    background-color: #654497; /* Slightly darker purple on hover */
+}
+
+footer .container.fr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px 0;
+}
+
+footer .container.fr p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #bbb; /* Slightly muted text for readability */
+}
+
+footer .container.fr a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+footer .container.fr a:hover {
+    color: #7851A9; /* Highlight links in purple on hover */
+}
+
+footer .social-icons {
+    margin-top: 20px;
+}
+
+footer .social-icons a {
+    display: inline-block;
+    color: #fff;
+    margin: 0 10px;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+    color: #7851A9; /* Change to purple on hover */
+}
+
+/* Scroll to top button positioning */
+#scrollToTopButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #7851A9;
+    color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 16px;
+    display: none; /* Initially hidden */
+    z-index: 1000;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#scrollToTopButton:hover {
+    background-color: #654497;
+}

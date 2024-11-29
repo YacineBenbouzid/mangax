@@ -1,7 +1,7 @@
 
-@extends('app')
+@extends('dashboard')
 
-@section('title', 'Adimin')
+@section('title', 'Admin')
 
 @section('content')
 <style>
